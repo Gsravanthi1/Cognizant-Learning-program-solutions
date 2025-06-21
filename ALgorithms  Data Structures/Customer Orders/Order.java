@@ -8,46 +8,55 @@ class Order {
         this.customerName = name;
         this.totalPrice = price;
     }
+    public void print() {
+        System.out.println("Order ID: " + orderId + ", Name: " + customerName + ", Total: ₹" + totalPrice);
+    }
 }
+class OrderSorter {
 
-class SortOrders {
-
-    // Bubble Sort
-    public void bubbleSort(Order[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j].totalPrice > arr[j + 1].totalPrice) {
-                    Order temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+    // Bubble Sort by totalPrice
+    public void bubbleSort(Order[] orders) {
+        int n = orders.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (orders[j].totalPrice > orders[j + 1].totalPrice) {
+                    // swap
+                    Order temp = orders[j];
+                    orders[j] = orders[j + 1];
+                    orders[j + 1] = temp;
                 }
             }
         }
     }
 
-    // Quick Sort
-    public void quickSort(Order[] arr, int low, int high) {
+    // Quick Sort helper
+    public void quickSort(Order[] orders, int low, int high) {
         if (low < high) {
-            int pi = partition(arr, low, high);
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            int pivotIndex = partition(orders, low, high);
+            quickSort(orders, low, pivotIndex - 1);
+            quickSort(orders, pivotIndex + 1, high);
         }
     }
 
-    private int partition(Order[] arr, int low, int high) {
-        double pivot = arr[high].totalPrice;
+    // Partition logic for Quick Sort
+    private int partition(Order[] orders, int low, int high) {
+        double pivot = orders[high].totalPrice;
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (arr[j].totalPrice < pivot) {
+            if (orders[j].totalPrice < pivot) {
                 i++;
-                Order temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                Order temp = orders[i];
+                orders[i] = orders[j];
+                orders[j] = temp;
             }
         }
-        Order temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
+        Order temp = orders[i + 1];
+        orders[i + 1] = orders[high];
+        orders[high] = temp;
         return i + 1;
+    }
+
+    public void printOrders(Order[] orders) {
+        for (Order o : orders) o.print();
     }
 }
