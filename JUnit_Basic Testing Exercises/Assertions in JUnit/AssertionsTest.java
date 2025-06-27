@@ -3,24 +3,24 @@ import static org.junit.Assert.*;
 
 public class AssertionsTest {
 
+    DemoAssertions demo = new DemoAssertions();
+
     @Test
     public void testAssertions() {
 
         // Assert equals
-        assertEquals(5, 2 + 3);
+        assertEquals(5, demo.add(2, 3));
 
         // Assert true
-        assertTrue(5 > 3);
+        assertTrue(demo.isGreater(5, 3));
 
         // Assert false
-        assertFalse(5 < 3);
+        assertFalse(demo.isLess(5, 3));
 
         // Assert null
-        Object obj1 = null;
-        assertNull(obj1);
+        assertNull(demo.getNullObject());
 
         // Assert not null
-        Object obj2 = new Object();
-        assertNotNull(obj2);
+        assertNotNull(demo.getNonNullObject());
     }
 }
