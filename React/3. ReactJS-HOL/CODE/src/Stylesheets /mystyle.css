@@ -1,0 +1,48 @@
+.container {
+  margin-top: 50px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.heading {
+  color: brown;
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.name-label {
+  color: blue;
+}
+
+.name-value {
+  color: #555;
+}
+
+.school-label {
+  color: crimson;
+}
+
+.school-value {
+  color: lightcoral;
+}
+
+.total-label {
+  color: purple;
+}
+
+.total-value {
+  color: slategray;
+}
+
+.score-label {
+  color: green;
+}
+
+.score-value {
+  color: darkolivegreen;
+}
